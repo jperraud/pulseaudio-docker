@@ -58,8 +58,7 @@ load-module module-position-event-sounds
 .nofail
 .include /etc/pulse/system.pa.d
 
-### Enable connecting to session bus
+### Customizations for running within a Docker container. Enable connecting 
+### to session/system bus and load alsa sinks.
 load-module module-dbus-protocol
-
-### Load alsa sinks
 load-module module-alsa-sink

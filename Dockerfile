@@ -1,6 +1,6 @@
 FROM debian:bookworm
 
-# Update and install alsa-utils
+# Install necessary dependencies
 RUN apt-get update \
     && apt-get -y --no-install-recommends install \
     alsa-utils \
@@ -22,10 +22,12 @@ USER audiouser
 # Set the working directory
 WORKDIR /home/audiouser
 
+# Copy adapted PulseAudio default configuration
 COPY default.pa /etc/pulse/
 
+# Load Setup script
 COPY setup.sh /usr/local/bin
 RUN sudo chmod +x /usr/local/bin/setup.sh
 
-# Default command
+# Start PulseAudio server
 ENTRYPOINT ["/bin/bash", "/usr/local/bin/setup.sh"]
