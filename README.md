@@ -14,7 +14,11 @@ This is a minimal working example of a  Docker Image with PulseAudio Server that
 
  3. Execute command(s) that access audio resources, e.g.:
  ```
+ # On Host
 $ docker exec -it <containerID> speaker-test
+
+ # or from within the container
+$ speaker-test
  ```
 
  **Important:** 

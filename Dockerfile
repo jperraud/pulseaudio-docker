@@ -7,9 +7,7 @@ RUN apt-get update \
     pulseaudio \
     pulseaudio-utils \
     dbus \
-    # Useful for debugging
-    #vim\
-    #sudo \
+    sudo \
     && rm -rf /var/lib/apt/lists/*
 
 # Create a non-root user and add to sudo group
