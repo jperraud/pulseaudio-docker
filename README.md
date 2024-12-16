@@ -9,7 +9,11 @@ This is a minimal working example of a  Docker Image with PulseAudio Server that
 
  2. Start the container with:
  ```shell
- $  docker run -it --device /dev/snd:/dev/snd pulseaudio-docker:0.0.1
+ $  docker run 
+     -v /var/run/dbus/system_bus_socket:/var/run/dbus/system_bus_socket
+     --security-opt apparmor:unconfined
+     --device /dev/snd:/dev/snd 
+     -it pulseaudio-docker:0.0.1
  ```
 
  3. Execute command(s) that access audio resources, e.g.:
@@ -29,6 +33,6 @@ $ pulseaudio --kill
 ```
 - If debugging is required, launch the PulseAudio server with:
 ```
-pulseaudio --start --exit-idle-time=-1 --daemonize=no -vvvv
+$ pulseaudio --start --exit-idle-time=-1 --daemonize=no -vvvv
 ```
 for additional debugging information.
